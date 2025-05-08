@@ -1,0 +1,59 @@
+services:
+  db:
+    image: postgres:15
+    container_name: scraper_db
+    environment:
+      POSTGRES_USER: symfony
+      POSTGRES_PASSWORD: symfony
+      POSTGRES_DB: scraper_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  scraper:
+    build:
+      context: ./scraper
+    container_name: scraper_service
+    environment:
+      - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+    volumes:
+      - ./scraper:/app
+    networks:
+      - backend
+
+  api:
+    build:
+      context: ./api
+    container_name: symfony_api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgres://symfony:symfony@db:5432/scraper_db
+    depends_on:
+      - db
+    volumes:
+      - ./api:/app
+    networks:
+      - backend
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: nuxt_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    networks:
+      - frontend_net
+      - backend
+
+networks:
+  backend:
+  frontend_net:
+
+volumes:
+  db_data:
