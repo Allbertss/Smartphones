@@ -7,7 +7,6 @@
 - **[frontend](./frontend)**: 
 - **`docker-compose.yml`**:
 
-
 ## 🚀 Running the Project
 
 To start the project locally using Docker, run the following command:
@@ -16,7 +15,7 @@ To start the project locally using Docker, run the following command:
 docker-compose up
 ```
 
-🔧 API Setup
+## 🔧 API Setup
 
 ```bash
 docker compose exec api composer install

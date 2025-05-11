@@ -124,12 +124,12 @@ async function fetchSmartphones(page) {
 }
 
 onMounted(async () => {
-    isLoading.value = true;
-
     try {
         await fetchSmartphones(currentPage.value);
-    } finally {
-        isLoading.value = false;
+    } catch (err) {
+        error.value = err;
+
+        console.error('Error on mounted:', err);
     }
 });
 
