@@ -16,6 +16,13 @@ To start the project locally using Docker, run the following command:
 docker-compose up
 ```
 
+🔧 API Setup
+
+```bash
+docker compose exec api composer install
+docker compose exec api php bin/console doctrine:migrations:migrate
+```
+
 To start scraper
 
 ```bash
