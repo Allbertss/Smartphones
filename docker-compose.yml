@@ -39,21 +39,21 @@ services:
     networks:
       - backend
 
-  frontend:
-    build:
-      context: ./frontend
-    container_name: nuxt_frontend
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/app
-    networks:
-      - frontend_net
-      - backend
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #   container_name: nuxt_frontend
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./frontend:/app
+  #   networks:
+  #     - frontend_net
+  #     - backend
 
 networks:
   backend:
-  frontend_net:
+  # frontend_net:
 
 volumes:
   db_data:
