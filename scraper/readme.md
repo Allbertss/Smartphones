@@ -10,7 +10,7 @@ cd scraper
 
 To run the scraper
 ```bash
-python3 main.py
+python3 src/main.py
 ```
 
 To run the tests
