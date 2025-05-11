@@ -2,10 +2,10 @@
 
 ## 📁 Project Structure
 
-- **[api](./api)**:
-- **[scraper](./scraper)**:
-- **[frontend](./frontend)**: 
-- **`docker-compose.yml`**:
+- **[api](./api)**
+- **[scraper](./scraper)**
+- **[frontend](./frontend)**
+- **`docker-compose.yml`**
 
 ## 🚀 Running the Project
 
