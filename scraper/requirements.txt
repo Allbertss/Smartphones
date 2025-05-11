@@ -3,3 +3,4 @@ httpx
 python-dotenv
 pytest
 pylint
+requests

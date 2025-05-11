@@ -1,6 +1,5 @@
 import requests
 
-
 class APIClient:
     def __init__(self, base_url, auth_token=None):
         self.base_url = base_url.rstrip("/")
@@ -19,14 +18,20 @@ class APIClient:
         error_count = 0
 
         for data in data_list:
-            response = requests.post(url, json=data, headers=self.headers, timeout=10)
-            
-            print(f"Response message: {response.text}")
-            print(f"Response status code: {response.status_code}")
+            try:
+                response = requests.post(url, json=data, headers=self.headers, timeout=10)
+                
+                print(f"Response message: {response.text}")
+                print(f"Response status code: {response.status_code}")
 
-            if response.status_code in (200, 201):
-                success_count += 1
-            else:
+                if response.status_code in (200, 201):
+                    success_count += 1
+                else:
+                    error_count += 1
+
+            except requests.exceptions.RequestException as e:
+                print(f"Request failed: {e}")
+                
                 error_count += 1
 
         return {
